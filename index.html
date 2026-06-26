@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive research guide for manufacturing and ERP/MRP systems, covering sectors, UK support, value-added resellers, and customized evaluation notes.">
+    <title>Manufacturing & ERP Systems Comprehensive Guide</title>
+    <!-- Load custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load core JS with defer for non-blocking rendering -->
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- Premium Cryptographic Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <div class="login-logo">🏭</div>
+            <h1 class="login-title">ERP Systems Guide</h1>
+            <p class="login-subtitle">Secure Access Portal</p>
+            <form id="loginForm" onsubmit="window.handleLogin(event)">
+                <div class="login-form-group">
+                    <label for="usernameInput">Username</label>
+                    <input type="text" id="usernameInput" required placeholder="Enter username" autocomplete="username">
+                </div>
+                <div class="login-form-group">
+                    <label for="passwordInput">Password</label>
+                    <input type="password" id="passwordInput" required placeholder="Enter password" autocomplete="current-password">
+                </div>
+                <div id="loginError" class="login-error-message"></div>
+                <button type="submit" class="login-btn">Secure Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="mainContainer" style="display: none;">
+        <header>
+            <h1>🏭 Manufacturing & ERP Systems Guide</h1>
+            <p>Comprehensive Research from Capterra, G2, and Industry Sources</p>
+        </header>
+
+        <!-- Control Panel Toolbar -->
+        <div class="csv-toolbar">
+            <div class="csv-title">⚙️ Control Panel & Data Management</div>
+            <div class="csv-actions">
+                <!-- Vendor Action -->
+                <button id="btnAddVendor" class="btn btn-primary" title="Add a new ERP/MRP vendor to the guide">➕ Add New Vendor</button>
+                
+                <!-- Separator -->
+                <span class="toolbar-separator">|</span>
+                
+                <!-- JSON Actions -->
+                <button id="btnExportJSON" class="btn btn-secondary" title="Export vendor database as data.json">📤 Export Database (JSON)</button>
+                <button id="btnImportJSONTrigger" class="btn btn-outline" title="Import vendor database from data.json">📥 Import Database (JSON)</button>
+                <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+                
+                <!-- Separator -->
+                <span class="toolbar-separator">|</span>
+                
+                <!-- CSV Actions -->
+                <button id="btnExportCSV" class="btn btn-secondary" title="Export evaluation notes to CSV">📤 Export Notes (CSV)</button>
+                <button id="btnImportTrigger" class="btn btn-outline" title="Import evaluation notes from CSV">📥 Import Notes (CSV)</button>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+
+                <!-- Separator -->
+                <span class="toolbar-separator">|</span>
+
+                <!-- Reset Action -->
+                <button id="btnResetDefaults" class="btn btn-outline btn-danger" title="Reset vendor list to default research database">🔄 Reset Defaults</button>
+
+                <!-- Separator -->
+                <span class="toolbar-separator">|</span>
+
+                <!-- Logout Action -->
+                <button id="btnLogout" class="btn btn-outline btn-danger" title="Sign out of the ERP Systems Guide">🔒 Log Out</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls Panel -->
+        <div class="controls">
+            <!-- Search bar -->
+            <div class="control-group">
+                <label for="searchInput">Search System</label>
+                <input type="text" class="search-box" id="searchInput" placeholder="e.g., Acumatica, Katana, SAP, WinMan...">
+            </div>
+
+            <!-- Custom Multi-select Sectors dropdown -->
+            <div class="control-group">
+                <label>Filter by Sectors</label>
+                <div class="custom-multiselect" id="sectorMultiselect">
+                    <div class="multiselect-select" id="sectorSelectHeader">
+                        <span class="selected-text">Select Sectors</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="multiselect-options" id="sectorOptionsList">
+                        <div class="multiselect-actions">
+                            <button type="button" class="btn btn-primary btn-small" id="selectAllSectors">Select All</button>
+                            <button type="button" class="btn btn-outline btn-small" id="clearAllSectors">Clear All</button>
+                        </div>
+                        <div class="multiselect-search-container">
+                            <input type="text" placeholder="Search sectors..." class="multiselect-search-input" id="sectorSearchInput">
+                        </div>
+                        <div class="multiselect-options-container" id="sectorOptionsContainer">
+                            <!-- Checkbox list dynamically built by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category filter -->
+            <div class="control-group">
+                <label for="categoryFilter">Filter by Category</label>
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Enterprise Solutions">Enterprise Solutions</option>
+                    <option value="Mid-Market Cloud">Mid-Market Cloud</option>
+                    <option value="Small Business">Small Business</option>
+                    <option value="Specialized Solutions">Specialized Solutions</option>
+                    <option value="Job Shop">Job Shop</option>
+                    <option value="Open Source">Open Source</option>
+                    <option value="Machine Monitoring & OEE">Machine Monitoring & OEE</option>
+                    <option value="Connected Worker / Digital Work Instructions">Connected Worker / Digital Work Instructions</option>
+                    <option value="IoT / Edge Connectivity">IoT / Edge Connectivity</option>
+                    <option value="Process Control & Quality">Process Control & Quality</option>
+                    <option value="Consulting & System Integrator">Consulting & System Integrator</option>
+                    <option value="Operations Platform">Operations Platform</option>
+                    <option value="SCADA, MES & IIoT Solutions">SCADA, MES & IIoT Solutions</option>
+                </select>
+            </div>
+
+            <!-- Company size filter -->
+            <div class="control-group">
+                <label for="sizeFilter">Filter by Company Size</label>
+                <select id="sizeFilter">
+                    <option value="">All Sizes</option>
+                    <option value="small">Small (5-50)</option>
+                    <option value="midmarket">Mid-Market (50-500)</option>
+                    <option value="enterprise">Enterprise (500+)</option>
+                </select>
+            </div>
+
+            <!-- UK region support filter -->
+            <div class="control-group">
+                <label for="supportFilter">Filter by UK Support</label>
+                <select id="supportFilter">
+                    <option value="">All Regions</option>
+                    <option value="UK Native">UK Native</option>
+                    <option value="UK Support">UK Support</option>
+                    <option value="No UK Support">International Only</option>
+                </select>
+            </div>
+
+            <!-- Financial stability filter -->
+            <div class="control-group">
+                <label for="stabilityFilter">Filter by Financial Stability</label>
+                <select id="stabilityFilter">
+                    <option value="">All Ratings</option>
+                    <option value="Safe">Safe (5/5)</option>
+                    <option value="Stable">Stable (4/5)</option>
+                    <option value="Moderate">Moderate (3/5)</option>
+                    <option value="Caution">Caution (2/5)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Systems Grid -->
+        <div class="content">
+            <div id="systemsContainer" class="systems-grid">
+                <!-- Cards dynamically populated by JS -->
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <span>Showing <strong id="resultCount">0</strong> system(s) | Last Updated: June 2026</span>
+            <span style="font-size: 0.9em; font-style: italic;">All notes are saved locally in your browser.</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>This guide is based on research from Capterra, G2, and vendor websites. Information is current as of June 2026.</p>
+            <p><strong>Note:</strong> Always verify current pricing, features, and capabilities directly with vendors or their UK implementation partners before making purchasing decisions.</p>
+        </div>
+    </div>
+
+    <!-- Unified Modal Overlay for system notes and VAR details -->
+    <div class="modal-overlay" id="varModalOverlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">System Notes</h2>
+                <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamically populated contents by JS -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
