@@ -106,26 +106,27 @@
                 </div>
             </div>
 
-            <!-- Category filter -->
+            <!-- Custom Multi-select Categories dropdown -->
             <div class="control-group">
-                <label for="categoryFilter">Filter by Category</label>
-                <select id="categoryFilter">
-                    <option value="">All Categories</option>
-                    <option value="Enterprise Solutions">Enterprise Solutions</option>
-                    <option value="Mid-Market Cloud">Mid-Market Cloud</option>
-                    <option value="Small Business">Small Business</option>
-                    <option value="Specialized Solutions">Specialized Solutions</option>
-                    <option value="Job Shop">Job Shop</option>
-                    <option value="Open Source">Open Source</option>
-                    <option value="Machine Monitoring & OEE">Machine Monitoring & OEE</option>
-                    <option value="Connected Worker / Digital Work Instructions">Connected Worker / Digital Work Instructions</option>
-                    <option value="IoT / Edge Connectivity">IoT / Edge Connectivity</option>
-                    <option value="Process Control & Quality">Process Control & Quality</option>
-                    <option value="Consulting & System Integrator">Consulting & System Integrator</option>
-                    <option value="Operations Platform">Operations Platform</option>
-                    <option value="SCADA, MES & IIoT Solutions">SCADA, MES & IIoT Solutions</option>
-                    <option value="Field Service Solutions">Field Service Solutions</option>
-                </select>
+                <label>Filter by Category</label>
+                <div class="custom-multiselect" id="categoryMultiselect">
+                    <div class="multiselect-select" id="categorySelectHeader">
+                        <span class="selected-text">Select Categories</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="multiselect-options" id="categoryOptionsList">
+                        <div class="multiselect-actions">
+                            <button type="button" class="btn btn-primary btn-small" id="selectAllCategories">Select All</button>
+                            <button type="button" class="btn btn-outline btn-small" id="clearAllCategories">Clear All</button>
+                        </div>
+                        <div class="multiselect-search-container">
+                            <input type="text" placeholder="Search categories..." class="multiselect-search-input" id="categorySearchInput">
+                        </div>
+                        <div class="multiselect-options-container" id="categoryOptionsContainer">
+                            <!-- Checkbox list dynamically built by JS -->
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Company size filter -->
@@ -163,10 +164,59 @@
             </div>
         </div>
 
+        <!-- View Toggle Toolbar -->
+        <div class="view-toolbar">
+            <div class="view-toggle-buttons">
+                <button id="btnGridView" class="btn-toggle active" onclick="window.switchView('grid')">🗂️ Grid View</button>
+                <button id="btnChartView" class="btn-toggle" onclick="window.switchView('chart')">📊 Market Position Chart</button>
+            </div>
+        </div>
+
         <!-- Systems Grid -->
         <div class="content">
             <div id="systemsContainer" class="systems-grid">
                 <!-- Cards dynamically populated by JS -->
+            </div>
+
+            <div id="chartContainer" class="chart-view-container" style="display: none;">
+                <div class="chart-wrapper">
+                    <!-- Zoom controls overlay -->
+                    <div class="chart-controls-overlay">
+                        <button class="btn-chart-control" onclick="window.zoomChart(1.25)" title="Zoom In">➕</button>
+                        <button class="btn-chart-control" onclick="window.zoomChart(0.8)" title="Zoom Out">➖</button>
+                        <button class="btn-chart-control" onclick="window.resetChartZoom()" title="Reset Zoom">🔄</button>
+                    </div>
+                    <!-- SVG Chart will be rendered here -->
+                </div>
+                <div class="chart-sidebar">
+                    <div class="chart-legend-box">
+                        <h3>Chart Legend</h3>
+                        <div class="legend-group">
+                            <h4>Vendor Positioning</h4>
+                            <ul class="legend-list">
+                                <li><span class="legend-color-indicator zone-leaders"></span><strong>Leaders:</strong> Top-Right</li>
+                                <li><span class="legend-color-indicator zone-players"></span><strong>Major Players:</strong> Mid-High</li>
+                                <li><span class="legend-color-indicator zone-contenders"></span><strong>Contenders:</strong> Mid-Low</li>
+                                <li><span class="legend-color-indicator zone-participants"></span><strong>Participants:</strong> Bottom-Left</li>
+                            </ul>
+                        </div>
+                        <div class="legend-group">
+                            <h4>Bubble Size (Target Size)</h4>
+                            <ul class="legend-list">
+                                <li><span class="legend-size-indicator size-enterprise"></span> Enterprise (500+)</li>
+                                <li><span class="legend-size-indicator size-midmarket"></span> Mid-Market (50-500)</li>
+                                <li><span class="legend-size-indicator size-small"></span> Small (5-50)</li>
+                            </ul>
+                        </div>
+                        <div class="legend-group">
+                            <h4>Interactivity</h4>
+                            <p style="font-size: 0.8em; color: var(--text-muted); line-height: 1.4; margin-top: 5px;">
+                                • Hover over any bubble to see the vendor's capabilities and strategies ratings.<br>
+                                • Click a bubble to view/edit evaluation notes and reseller partners.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
