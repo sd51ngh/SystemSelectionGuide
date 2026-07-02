@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A comprehensive research guide for manufacturing and ERP/MRP systems, covering sectors, UK support, value-added resellers, and customized evaluation notes.">
-    <title>Manufacturing & ERP Systems Comprehensive Guide</title>
+    <meta name="description"
+        content="A comprehensive research guide for manufacturing software systems, covering sectors, UK support, value-added resellers, and customized evaluation notes.">
+    <title>Manufacturing Software Systems Comprehensive Guide</title>
     <!-- Load custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <!-- Load core JS with defer for non-blocking rendering -->
     <script src="app.js" defer></script>
 </head>
+
 <body>
     <!-- Premium Cryptographic Login Overlay -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-card">
             <div class="login-logo">🏭</div>
-            <h1 class="login-title">ERP Systems Guide</h1>
+            <h1 class="login-title">Manufacturing Software Systems Guide</h1>
             <p class="login-subtitle">Secure Access Portal</p>
             <form id="loginForm" onsubmit="window.handleLogin(event)">
                 <div class="login-form-group">
@@ -24,7 +27,8 @@
                 </div>
                 <div class="login-form-group">
                     <label for="passwordInput">Password</label>
-                    <input type="password" id="passwordInput" required placeholder="Enter password" autocomplete="current-password">
+                    <input type="password" id="passwordInput" required placeholder="Enter password"
+                        autocomplete="current-password">
                 </div>
                 <div id="loginError" class="login-error-message"></div>
                 <button type="submit" class="login-btn">Secure Login</button>
@@ -34,8 +38,9 @@
 
     <div class="container" id="mainContainer" style="display: none;">
         <header>
-            <h1>🏭 Manufacturing & ERP Systems Guide</h1>
-            <p>Comprehensive Research from Capterra, G2, and Industry Sources</p>
+            <h1>🏭 Manufacturing Software Systems Guide</h1>
+            <p>Comprehensive Research from Industry Sources, just a head start and not to be confused as qualified
+                vendor list.</p>
         </header>
 
         <!-- Control Panel Toolbar -->
@@ -43,35 +48,44 @@
             <div class="csv-title">⚙️ Control Panel & Data Management</div>
             <div class="csv-actions">
                 <!-- Vendor Action -->
-                <button id="btnAddVendor" class="btn btn-primary" title="Add a new ERP/MRP vendor to the guide">➕ Add New Vendor</button>
-                
+                <button id="btnAddVendor" class="btn btn-primary"
+                    title="Add a new vendor to the Manufacturing Software Systems Guide">➕ Add
+                    New Vendor</button>
+
                 <!-- Separator -->
                 <span class="toolbar-separator">|</span>
-                
+
                 <!-- JSON Actions -->
-                <button id="btnExportJSON" class="btn btn-secondary" title="Export vendor database as data.json">📤 Export Database (JSON)</button>
-                <button id="btnImportJSONTrigger" class="btn btn-outline" title="Import vendor database from data.json">📥 Import Database (JSON)</button>
+                <button id="btnExportJSON" class="btn btn-secondary" title="Export vendor database as data.json">📤
+                    Export Database (JSON)</button>
+                <button id="btnImportJSONTrigger" class="btn btn-outline"
+                    title="Import vendor database from data.json">📥 Import Database (JSON)</button>
                 <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
-                
+
                 <!-- Separator -->
                 <span class="toolbar-separator">|</span>
-                
+
                 <!-- CSV Actions -->
-                <button id="btnExportCSV" class="btn btn-secondary" title="Export evaluation notes to CSV">📤 Export Notes (CSV)</button>
-                <button id="btnImportTrigger" class="btn btn-outline" title="Import evaluation notes from CSV">📥 Import Notes (CSV)</button>
+                <button id="btnExportCSV" class="btn btn-secondary" title="Export evaluation notes to CSV">📤 Export
+                    Notes (CSV)</button>
+                <button id="btnImportTrigger" class="btn btn-outline" title="Import evaluation notes from CSV">📥 Import
+                    Notes (CSV)</button>
                 <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
 
                 <!-- Separator -->
                 <span class="toolbar-separator">|</span>
 
                 <!-- Reset Action -->
-                <button id="btnResetDefaults" class="btn btn-outline btn-danger" title="Reset vendor list to default research database">🔄 Reset Defaults</button>
+                <button id="btnResetDefaults" class="btn btn-outline btn-danger"
+                    title="Reset vendor list to default research database">🔄 Reset Defaults</button>
 
                 <!-- Separator -->
                 <span class="toolbar-separator">|</span>
 
                 <!-- Logout Action -->
-                <button id="btnLogout" class="btn btn-outline btn-danger" title="Sign out of the ERP Systems Guide">🔒 Log Out</button>
+                <button id="btnLogout" class="btn btn-outline btn-danger"
+                    title="Sign out of the Manufacturing Software Systems Guide">🔒
+                    Log Out</button>
             </div>
         </div>
 
@@ -80,7 +94,8 @@
             <!-- Search bar -->
             <div class="control-group">
                 <label for="searchInput">Search System</label>
-                <input type="text" class="search-box" id="searchInput" placeholder="e.g., Acumatica, Katana, SAP, WinMan...">
+                <input type="text" class="search-box" id="searchInput"
+                    placeholder="e.g., Acumatica, Katana, SAP, WinMan...">
             </div>
 
             <!-- Custom Multi-select Sectors dropdown -->
@@ -93,11 +108,14 @@
                     </div>
                     <div class="multiselect-options" id="sectorOptionsList">
                         <div class="multiselect-actions">
-                            <button type="button" class="btn btn-primary btn-small" id="selectAllSectors">Select All</button>
-                            <button type="button" class="btn btn-outline btn-small" id="clearAllSectors">Clear All</button>
+                            <button type="button" class="btn btn-primary btn-small" id="selectAllSectors">Select
+                                All</button>
+                            <button type="button" class="btn btn-outline btn-small" id="clearAllSectors">Clear
+                                All</button>
                         </div>
                         <div class="multiselect-search-container">
-                            <input type="text" placeholder="Search sectors..." class="multiselect-search-input" id="sectorSearchInput">
+                            <input type="text" placeholder="Search sectors..." class="multiselect-search-input"
+                                id="sectorSearchInput">
                         </div>
                         <div class="multiselect-options-container" id="sectorOptionsContainer">
                             <!-- Checkbox list dynamically built by JS -->
@@ -116,11 +134,14 @@
                     </div>
                     <div class="multiselect-options" id="categoryOptionsList">
                         <div class="multiselect-actions">
-                            <button type="button" class="btn btn-primary btn-small" id="selectAllCategories">Select All</button>
-                            <button type="button" class="btn btn-outline btn-small" id="clearAllCategories">Clear All</button>
+                            <button type="button" class="btn btn-primary btn-small" id="selectAllCategories">Select
+                                All</button>
+                            <button type="button" class="btn btn-outline btn-small" id="clearAllCategories">Clear
+                                All</button>
                         </div>
                         <div class="multiselect-search-container">
-                            <input type="text" placeholder="Search categories..." class="multiselect-search-input" id="categorySearchInput">
+                            <input type="text" placeholder="Search categories..." class="multiselect-search-input"
+                                id="categorySearchInput">
                         </div>
                         <div class="multiselect-options-container" id="categoryOptionsContainer">
                             <!-- Checkbox list dynamically built by JS -->
@@ -167,8 +188,10 @@
         <!-- View Toggle Toolbar -->
         <div class="view-toolbar">
             <div class="view-toggle-buttons">
-                <button id="btnGridView" class="btn-toggle active" onclick="window.switchView('grid')">🗂️ Grid View</button>
-                <button id="btnChartView" class="btn-toggle" onclick="window.switchView('chart')">📊 Market Position Chart</button>
+                <button id="btnGridView" class="btn-toggle active" onclick="window.switchView('grid')">🗂️ Grid
+                    View</button>
+                <button id="btnChartView" class="btn-toggle" onclick="window.switchView('chart')">📊 Market Position
+                    Chart</button>
             </div>
         </div>
 
@@ -184,7 +207,8 @@
                     <div class="chart-controls-overlay">
                         <button class="btn-chart-control" onclick="window.zoomChart(1.25)" title="Zoom In">➕</button>
                         <button class="btn-chart-control" onclick="window.zoomChart(0.8)" title="Zoom Out">➖</button>
-                        <button class="btn-chart-control" onclick="window.resetChartZoom()" title="Reset Zoom">🔄</button>
+                        <button class="btn-chart-control" onclick="window.resetChartZoom()"
+                            title="Reset Zoom">🔄</button>
                     </div>
                     <!-- SVG Chart will be rendered here -->
                 </div>
@@ -194,10 +218,16 @@
                         <div class="legend-group">
                             <h4>Vendor Positioning</h4>
                             <ul class="legend-list">
-                                <li><span class="legend-color-indicator zone-leaders"></span><strong>Leaders:</strong> Top-Right</li>
-                                <li><span class="legend-color-indicator zone-players"></span><strong>Major Players:</strong> Mid-High</li>
-                                <li><span class="legend-color-indicator zone-contenders"></span><strong>Contenders:</strong> Mid-Low</li>
-                                <li><span class="legend-color-indicator zone-participants"></span><strong>Participants:</strong> Bottom-Left</li>
+                                <li><span class="legend-color-indicator zone-leaders"></span><strong>Leaders:</strong>
+                                    Top-Right</li>
+                                <li><span class="legend-color-indicator zone-players"></span><strong>Major
+                                        Players:</strong> Mid-High</li>
+                                <li><span
+                                        class="legend-color-indicator zone-contenders"></span><strong>Contenders:</strong>
+                                    Mid-Low</li>
+                                <li><span
+                                        class="legend-color-indicator zone-participants"></span><strong>Participants:</strong>
+                                    Bottom-Left</li>
                             </ul>
                         </div>
                         <div class="legend-group">
@@ -228,8 +258,10 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>This guide is based on research from Capterra, G2, and vendor websites. Information is current as of July 2026.</p>
-            <p><strong>Note:</strong> Always verify current pricing, features, and capabilities directly with vendors or their UK implementation partners before making purchasing decisions.</p>
+            <p>This guide is based on research from Capterra, G2, and vendor websites. Information is current as of July
+                2026.</p>
+            <p><strong>Note:</strong> Always verify current pricing, features, and capabilities directly with vendors or
+                their UK implementation partners before making purchasing decisions.</p>
         </div>
     </div>
 
@@ -246,4 +278,5 @@
         </div>
     </div>
 </body>
+
 </html>
