@@ -622,11 +622,28 @@ header p {
     margin-top: auto;
 }
 
-.card-actions-triple {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-top: auto;
+.btn-modify-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-all);
+    color: var(--text-muted);
+    z-index: 10;
+}
+
+.btn-modify-icon:hover {
+    background: var(--bg-alt);
+    color: var(--primary);
+    transform: scale(1.15);
 }
 
 .btn-card {

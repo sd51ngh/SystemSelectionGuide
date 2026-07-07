@@ -958,22 +958,21 @@ function createSystemCard(system) {
     let actionButtonsHTML = "";
     if (hasVars) {
         actionButtonsHTML = `
-            <div class="card-actions-triple">
+            <div class="card-actions-double">
                 <button class="btn btn-primary btn-card" onclick="openNotesModal('${escapeJS(system.name)}')">📝 Notes</button>
                 <button class="btn btn-secondary btn-card" onclick="openVarsModal('${escapeJS(system.name)}')">🤝 UK VARs${varBadgeHTML}</button>
-                <button class="btn btn-outline btn-card" onclick="openAddVendorModal('${escapeJS(system.name)}')">✏️ Modify</button>
             </div>
         `;
     } else {
         actionButtonsHTML = `
-            <div class="card-actions-double">
+            <div class="card-actions">
                 <button class="btn btn-primary btn-card" onclick="openNotesModal('${escapeJS(system.name)}')">📝 Notes</button>
-                <button class="btn btn-outline btn-card" onclick="openAddVendorModal('${escapeJS(system.name)}')">✏️ Modify</button>
             </div>
         `;
     }
 
     card.innerHTML = `
+        <button class="btn-modify-icon" onclick="openAddVendorModal('${escapeJS(system.name)}')" title="Modify vendor details">✏️</button>
         <div class="card-header">
             <div class="category-badges-container" style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px;">
                 ${(system.categories || []).map(cat => `
