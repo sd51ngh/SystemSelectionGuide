@@ -80,6 +80,16 @@
                 <!-- Separator -->
                 <span class="toolbar-separator">|</span>
 
+                <!-- Markdown Actions -->
+                <button id="btnExportMD" class="btn btn-secondary" title="Export evaluation notes to Markdown">📤 Export
+                    Notes (MD)</button>
+                <button id="btnImportMDTrigger" class="btn btn-outline" title="Import evaluation notes from Markdown">📥 Import
+                    Notes (MD)</button>
+                <input type="file" id="mdFileInput" accept=".md" style="display: none;">
+
+                <!-- Separator -->
+                <span class="toolbar-separator">|</span>
+
                 <!-- Reset Action -->
                 <button id="btnResetDefaults" class="btn btn-outline btn-danger"
                     title="Reset vendor list to default research database">🔄 Reset Defaults</button>
@@ -257,13 +267,13 @@
 
         <!-- Stats Bar -->
         <div class="stats-bar">
-            <span>Showing <strong id="resultCount">0</strong> system(s) | Last Updated: July 2026</span>
+            <span>Showing <strong id="resultCount">128</strong> system(s) | Last Updated: November 2026</span>
             <span style="font-size: 0.9em; font-style: italic;">All notes are saved locally in your browser.</span>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>This guide is based on research from Capterra, G2, and vendor websites. Information is current as of July
+            <p>This guide is based on research from Capterra, G2, and vendor websites. Information is current as of November
                 2026.</p>
             <p><strong>Note:</strong> Always verify current pricing, features, and capabilities directly with vendors or
                 their UK implementation partners before making purchasing decisions.</p>
